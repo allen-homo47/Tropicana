@@ -1,0 +1,98 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+.cabecalho{
+    background-color: #0084ff;
+    display: flex;
+    gap: 25vw;
+    text-align: center;
+    
+}
+.logo{
+    text-align: center;
+    margin-left: 3vw;
+  
+}
+.navbar{
+ 
+     margin-top: 3vh;
+}
+
+.navbar a{
+   
+    text-decoration: none;
+    color: white;
+
+
+    margin-left: 2vh;
+        
+    gap: 2p;
+}
+.intro{
+
+    background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    url('piscinap.jpg');
+    background-size: cover;
+    background-position: center;
+     color: white;
+    height: 35vh;;
+    text-align: center;
+    width: 100vw;
+
+}
+.servicos{
+
+   
+    height: 30vh;
+    width: 100vw;
+    text-align: center;
+    color: #0084ff;
+    justify-content: center;
+    align-items: center;
+}
+.fotos{
+display: flex;
+border-radius: 100%;
+justify-content: center;
+justify-items: center;
+}
+
+.fotos img {
+    border-radius: 100%;
+}
+
+.maisSobre{
+    background: 
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    url('piscina1.jpg');
+    background-size: cover;
+    background-position: center;
+     color: white;
+    height: 30vh;
+    justify-content: center;
+    text-align: center;
+}nm
+.contacto{
+    background-color: rgb(222, 135, 135);
+    text-align: center;
+    align-items: center;
+}
+.contacto a{
+    
+}
+
+.rodape{
+    background-color:#0084ff ;
+   
+ 
+}
+
+.rodape a {
+    text-decoration: none;
+    color: white;
+}

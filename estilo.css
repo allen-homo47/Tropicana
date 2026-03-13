@@ -1,277 +1,937 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complexo Tropicana</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
+/* ===================================
+   COMPLEXO TROPICANA — Design System
+   Tema: Tropical Luxury Night
+=================================== */
 
-<!-- NAVBAR -->
-<header class="cabecalho" id="cabecalho">
-    <div class="logo">
-        <span class="logo-top">COMPLEXO</span>
-        <span class="logo-main">Tropicana</span>
-    </div>
-    <nav class="navbar">
-        <a href="#home">Home</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#sobre">Sobre Nós</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-    <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
-</header>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap');
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
-    <a href="#home" onclick="toggleNav()">Home</a>
-    <a href="#servicos" onclick="toggleNav()">Serviços</a>
-    <a href="#sobre" onclick="toggleNav()">Sobre Nós</a>
-    <a href="#contacto" onclick="toggleNav()">Contacto</a>
-</div>
+:root {
+    --night: #080d12;
+    --deep: #0e1820;
+    --teal: #00c9a7;
+    --teal-dim: #00957a;
+    --gold: #e8b86d;
+    --gold-dim: #c49a48;
+    --white: #f0ede8;
+    --muted: rgba(240,237,232,0.55);
+    --card-bg: rgba(255,255,255,0.04);
+    --card-border: rgba(255,255,255,0.08);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+}
 
-<!-- HERO -->
-<section id="home" class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-particles">
-        <div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div><div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-    <div class="hero-content">
-        <p class="hero-eyebrow">Restaurante · Bar · Piscina · Guest House</p>
-        <h1>Uma experiência<br><em>tropical</em> inesquecível</h1>
-        <p class="hero-sub">Onde cada momento se transforma numa memória. Venha descobrir o paraíso no coração da cidade.</p>
-        <div class="hero-btns">
-            <a href="#servicos" class="btn btn-glow">Explorar</a>
-            <a href="#contacto" class="btn btn-ghost">Reservar Mesa</a>
-        </div>
-    </div>
-    <div class="hero-scroll-hint">
-        <div class="scroll-dot"></div>
-    </div>
-</section>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-<!-- STRIP -->
-<div class="strip">
-    <span>🌴 Restaurante</span>
-    <span class="strip-div">·</span>
-    <span>🍹 Bar & Drinks</span>
-    <span class="strip-div">·</span>
-    <span>🏊 Piscina</span>
-    <span class="strip-div">·</span>
-    <span>🛏️ Guest House</span>
-    <span class="strip-div">·</span>
-    <span>🎵 Música Ao Vivo</span>
-</div>
+body {
+    font-family: var(--font-body);
+    background: var(--night);
+    color: var(--white);
+    overflow-x: hidden;
+}
 
-<!-- SERVIÇOS -->
-<section id="servicos" class="servicos">
-    <div class="sec-header">
-        <p class="sec-tag">O que oferecemos</p>
-        <h2>Nossos <em>Serviços</em></h2>
-        <p class="sec-desc">Cada espaço desenhado para o seu prazer e conforto.</p>
-    </div>
+em {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--teal);
+}
 
-    <div class="cards-grid">
+/* ===================================
+   NAVBAR
+=================================== */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 7%;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(8, 13, 18, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0, 201, 167, 0.1);
+    transition: all 0.4s;
+}
 
-        <div class="card" data-index="piscina">
-            <div class="card-img">
-                <img src="img/image51.jpeg" alt="Piscina">
-                <div class="card-shine"></div>
-            </div>
-            <div class="card-body">
-                <div class="card-num">01</div>
-                <h3>Piscina</h3>
-                <p>Relaxe e aproveite nossa piscina com água cristalina, vista panorâmica e serviço à beira-mar.</p>
-                <button class="btn-card" onclick="abrirModal('piscina')">Ver Fotos <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
+.cabecalho.solid {
+    background: rgba(8, 13, 18, 0.98);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+}
 
-        <div class="card" data-index="restaurante">
-            <div class="card-img">
-                <img src="img/image32.jpeg" alt="Restaurante">
-                <div class="card-shine"></div>
-            </div>
-            <div class="card-body">
-                <div class="card-num">02</div>
-                <h3>Restaurante</h3>
-                <p>Pratos internacionais e locais preparados por chefs experientes, numa atmosfera elegante.</p>
-                <button class="btn-card" onclick="abrirModal('restaurante')">Ver Fotos <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    gap: 1px;
+}
 
-        <div class="card" data-index="bar">
-            <div class="card-img">
-                <img src="img/image42.jpeg" alt="Bar">
-                <div class="card-shine"></div>
-            </div>
-            <div class="card-body">
-                <div class="card-num">03</div>
-                <h3>Bar</h3>
-                <p>Drinks artesanais, cocktails tropicais e música ao vivo numa atmosfera única e vibrante.</p>
-                <button class="btn-card" onclick="abrirModal('bar')">Ver Fotos <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
+.logo-top {
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--teal);
+    text-transform: uppercase;
+    font-weight: 400;
+}
 
-        <div class="card" data-index="acomodacao">
-            <div class="card-img">
-                <img src="img/qrt.jpeg" alt="Acomodações">
-                <div class="card-shine"></div>
-            </div>
-            <div class="card-body">
-                <div class="card-num">04</div>
-                <h3>Guest House</h3>
-                <p>Quartos confortáveis e bem equipados com toda a privacidade que merece.</p>
-                <button class="btn-card" onclick="abrirModal('acomodacao')">Ver Fotos <i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
+.logo-main {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 1px;
+}
 
-    </div>
-</section>
+.navbar {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+}
 
-<!-- SOBRE -->
-<section id="sobre" class="sobre">
-    <div class="sobre-img-col">
-        <img src="img/bar.jpeg" alt="Complexo Tropicana" class="sobre-img-main">
-        <img src="img/image44.jpeg" alt="Bar Tropicana" class="sobre-img-sec">
-        <div class="sobre-badge">
-            <span class="badge-num">5★</span>
-            <span class="badge-txt">Experiência</span>
-        </div>
-    </div>
-    <div class="sobre-text">
-        <p class="sec-tag">Sobre Nós</p>
-        <h2>Um paraíso <em>único</em> para cada momento</h2>
-        <p>O Complexo Tropicana é um espaço multifuncional que combina gastronomia de excelência, lazer aquático, entretenimento e acomodação num único destino.</p>
-        <p>Fundado com a missão de proporcionar experiências memoráveis, o nosso complexo atende eventos privados, corporativos e familiares com o mais alto padrão de qualidade.</p>
-        <div class="sobre-stats">
-            <div class="sobre-stat">
-                <span class="snum">500+</span>
-                <span class="slbl">Eventos Realizados</span>
-            </div>
-            <div class="sobre-stat">
-                <span class="snum">4</span>
-                <span class="slbl">Espaços Exclusivos</span>
-            </div>
-            <div class="sobre-stat">
-                <span class="snum">∞</span>
-                <span class="slbl">Memórias Criadas</span>
-            </div>
-        </div>
-        <a href="#contacto" class="btn btn-teal">Fazer Reserva</a>
-    </div>
-</section>
+.navbar a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+}
 
-<!-- CTA BANNER -->
-<section class="cta-banner">
-    <div class="cta-overlay"></div>
-    <div class="cta-content">
-        <p class="sec-tag light">Eventos & Celebrações</p>
-        <h2>Torne o seu evento <em>extraordinário</em></h2>
-        <p>Aniversários, casamentos, eventos corporativos — fazemos de cada celebração um momento único.</p>
-        <a href="#contacto" class="btn btn-glow">Fale Connosco</a>
-    </div>
-</section>
+.navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--teal);
+    transition: width 0.3s;
+}
 
-<!-- CONTACTO -->
-<section id="contacto" class="contacto">
-    <div class="contacto-left">
-        <p class="sec-tag light">Estamos aqui</p>
-        <h2>Entre em <em>contacto</em></h2>
-        <p>Reserve a sua mesa, evento ou acomodação. Respondemos em até 2 horas.</p>
-        <div class="contact-items">
-            <div class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <div>
-                    <span class="clbl">Telefone</span>
-                    <span>+258 XX XXX XXXX</span>
-                </div>
-            </div>
-            <div class="contact-item">
-                <i class="fa-brands fa-whatsapp"></i>
-                <div>
-                    <span class="clbl">WhatsApp</span>
-                    <a href="https://wa.me/258000000000" target="_blank">Enviar mensagem</a>
-                </div>
-            </div>
-            <div class="contact-item">
-                <i class="fa-brands fa-instagram"></i>
-                <div>
-                    <span class="clbl">Instagram</span>
-                    <span>@complexotropicana</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="contacto-right">
-        <div class="form-group">
-            <input type="text" placeholder="O seu nome" class="form-input">
-        </div>
-        <div class="form-group">
-            <input type="tel" placeholder="Telefone / WhatsApp" class="form-input">
-        </div>
-        <div class="form-group">
-            <select class="form-input">
-                <option value="" disabled selected>Tipo de reserva</option>
-                <option>Restaurante</option>
-                <option>Bar</option>
-                <option>Piscina</option>
-                <option>Guest House</option>
-                <option>Evento Privado</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <textarea placeholder="Mensagem ou detalhes..." class="form-input form-textarea"></textarea>
-        </div>
-         <a href="https://wa.me/258878768014" target="_blank"  class="btn btn-glow full-w"  >Enviar Pedido</a>
-    </div>
-</section>
+.navbar a:hover { color: var(--teal); }
+.navbar a:hover::after { width: 100%; }
 
-<!-- FOOTER -->
-<footer class="rodape">
-    <div class="rodape-top">
-        <div class="rodape-logo">
-            <span class="logo-top">COMPLEXO</span>
-            <span class="logo-main">Tropicana</span>
-        </div>
-        <div class="rodape-links">
-            <a href="#home">Home</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#sobre">Sobre Nós</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-        <div class="rodape-social">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-    </div>
-    <div class="rodape-bottom">
-        <p>© 2026 Complexo Tropicana · Todos os direitos reservados · Desenvolvido por AJIT</p>
-    </div>
-</footer>
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
 
-<!-- MODAL GALERIA -->
-<div id="galeria-modal" class="g-modal" onclick="fecharModalFora(event)">
-    <div class="g-modal-inner">
-        <button class="g-close" onclick="fecharModal()" aria-label="Fechar">&times;</button>
-        <h3 id="modal-titulo"></h3>
-        <div class="g-img-wrap">
-            <button class="g-arrow g-prev" onclick="prevFoto()"><i class="fa-solid fa-chevron-left"></i></button>
-            <img id="modal-img" src="" alt="Foto do serviço">
-            <button class="g-arrow g-next" onclick="nextFoto()"><i class="fa-solid fa-chevron-right"></i></button>
-        </div>
-        <div class="g-dots" id="modal-dots"></div>
-    </div>
-</div>
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--white);
+    transition: 0.3s;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: rgba(8, 13, 18, 0.98);
+    padding: 20px 7%;
+    gap: 18px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.mobile-nav.open { display: flex; }
+
+.mobile-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.mobile-nav a:hover { color: var(--teal); }
+
+/* ===================================
+   HERO
+=================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 7%;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(8,13,18,0.88) 40%, rgba(0,201,167,0.08) 100%),
+        url('img/bar.jpeg') center/cover no-repeat;
+    z-index: 0;
+}
+
+/* Particles */
+.hero-particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--teal);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-up 8s ease-in infinite;
+}
+
+.particle:nth-child(1) { left: 15%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 35%; animation-delay: 2s; }
+.particle:nth-child(3) { left: 55%; animation-delay: 4s; }
+.particle:nth-child(4) { left: 70%; animation-delay: 1s; }
+.particle:nth-child(5) { left: 85%; animation-delay: 3s; }
+
+@keyframes float-up {
+    0% { bottom: 0; opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.3; }
+    100% { bottom: 100%; opacity: 0; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+}
+
+.hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 18px;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+}
+
+.hero-content h1 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 90px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+}
+
+.hero-content h1 em {
+    display: block;
+    color: var(--teal);
+    font-style: italic;
+}
+
+.hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 460px;
+    margin-bottom: 38px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.7s forwards;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.scroll-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(12px); opacity: 0.3; }
+}
+
+/* ===================================
+   BUTTONS
+=================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    transition: all 0.35s ease;
+}
+
+.btn-glow {
+    background: var(--teal);
+    color: var(--night);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0, 201, 167, 0.3);
+}
+.btn-glow:hover {
+    background: #00e8c0;
+    box-shadow: 0 0 35px rgba(0, 201, 167, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 2px;
+}
+.btn-ghost:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+}
+
+.btn-teal {
+    background: transparent;
+    color: var(--teal);
+    border: 1px solid var(--teal);
+    border-radius: 2px;
+}
+.btn-teal:hover {
+    background: var(--teal);
+    color: var(--night);
+}
+
+.full-w { width: 100%; text-align: center; }
+
+/* ===================================
+   STRIP
+=================================== */
+.strip {
+    background: var(--teal);
+    padding: 14px 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--night);
+    font-weight: 500;
+}
+
+.strip-div { opacity: 0.4; }
+
+/* ===================================
+   SERVIÇOS
+=================================== */
+.servicos {
+    padding: 110px 7%;
+    background: var(--night);
+}
+
+.sec-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.sec-tag {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.sec-tag.light { color: var(--teal); }
+
+.sec-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4.5vw, 58px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+}
+
+.sec-desc {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    margin-top: 14px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0,201,167,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(0,201,167,0.08);
+}
+
+.card-img {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.card:hover .card-img img { transform: scale(1.1); }
+
+.card-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(8,13,18,0.8) 100%);
+}
+
+.card-body {
+    padding: 28px;
+}
+
+.card-num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    color: rgba(0,201,167,0.15);
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.card-body h3 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.card-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.btn-card {
+    background: none;
+    border: none;
+    color: var(--teal);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    transition: gap 0.3s, color 0.3s;
+}
+
+.btn-card:hover { gap: 14px; color: #00e8c0; }
+
+/* ===================================
+   SOBRE
+=================================== */
+.sobre {
+    padding: 110px 7%;
+    background: var(--deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.sobre-img-col {
+    position: relative;
+    height: 520px;
+}
+
+.sobre-img-main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 75%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.sobre-img-sec {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 55%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    border: 3px solid var(--deep);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.sobre-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--teal);
+    color: var(--night);
+    padding: 20px 22px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,201,167,0.35);
+    z-index: 2;
+}
+
+.badge-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.badge-txt {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+}
+
+.sobre-text .sec-tag { text-align: left; }
+
+.sobre-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 3.5vw, 50px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 22px;
+}
+
+.sobre-text p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 14px;
+}
+
+.sobre-stats {
+    display: flex;
+    gap: 32px;
+    margin: 30px 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.sobre-stat { display: flex; flex-direction: column; }
+
+.snum {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--teal);
+    font-weight: 300;
+    line-height: 1;
+}
+
+.slbl {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+/* ===================================
+   CTA BANNER
+=================================== */
+.cta-banner {
+    position: relative;
+    padding: 100px 7%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(8,13,18,0.75), rgba(8,13,18,0.75)),
+        url('img/image50.jpeg') center/cover no-repeat;
+    z-index: 0;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4vw, 56px);
+    font-weight: 300;
+    color: var(--white);
+    margin: 12px 0 18px;
+    line-height: 1.2;
+}
+
+.cta-content p {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* ===================================
+   CONTACTO
+=================================== */
+.contacto {
+    background: var(--night);
+    padding: 110px 7%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.contacto-left h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.2;
+    margin: 12px 0 18px;
+}
+
+.contacto-left > p {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 36px;
+}
+
+.contact-items { display: flex; flex-direction: column; gap: 22px; }
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.contact-item i {
+    font-size: 18px;
+    color: var(--teal);
+    width: 22px;
+    text-align: center;
+}
+
+.contact-item > div { display: flex; flex-direction: column; gap: 3px; }
+
+.clbl {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+}
+
+.contact-item span, .contact-item a {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 300;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover { color: var(--teal); }
+
+.contacto-right { display: flex; flex-direction: column; gap: 16px; }
+
+.form-group { width: 100%; }
+
+.form-input {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--white);
+    padding: 15px 18px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+}
+
+.form-input::placeholder { color: rgba(240,237,232,0.35); }
+.form-input option { background: var(--deep); color: var(--white); }
+.form-input:focus { border-color: var(--teal); }
+
+.form-textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+.rodape {
+    background: var(--deep);
+    border-top: 1px solid var(--card-border);
+}
+
+.rodape-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 7%;
+    flex-wrap: wrap;
+    gap: 30px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.rodape-logo .logo-top { font-size: 9px; letter-spacing: 5px; color: var(--teal); text-transform: uppercase; display: block; }
+.rodape-logo .logo-main { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--white); display: block; }
+
+.rodape-links { display: flex; gap: 28px; flex-wrap: wrap; }
+
+.rodape-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.rodape-links a:hover { color: var(--teal); }
+
+.rodape-social { display: flex; gap: 16px; }
+
+.rodape-social a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--card-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.rodape-social a:hover { border-color: var(--teal); color: var(--teal); }
+
+.rodape-bottom {
+    text-align: center;
+    padding: 20px 7%;
+}
+
+.rodape-bottom p {
+    font-size: 12px;
+    color: rgba(240,237,232,0.25);
+    letter-spacing: 0.5px;
+}
+
+/* ===================================
+   MODAL GALERIA
+=================================== */
+.g-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(8,13,18,0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+}
+
+.g-modal.open { display: flex; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.g-modal-inner {
+    position: relative;
+    max-width: 800px;
+    width: 90%;
+    text-align: center;
+}
+
+.g-modal-inner h3 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+}
+
+.g-img-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+#modal-img {
+    width: 100%;
+    height: 55vh;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.g-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,201,167,0.15);
+    border: 1px solid rgba(0,201,167,0.3);
+    color: var(--teal);
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.g-arrow:hover { background: var(--teal); color: var(--night); }
+.g-prev { left: 12px; }
+.g-next { right: 12px; }
+
+.g-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s;
+    padding: 0;
+}
+
+.g-close:hover { color: var(--white); }
+
+.g-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.g-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.g-dot.active {
+    background: var(--teal);
+    transform: scale(1.3);
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 900px) {
+    .sobre,
+    .contacto {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .sobre-img-col { height: 350px; }
+
+    .navbar { display: none; }
+    .hamburger { display: flex; }
+}
+
+@media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 42px; }
+    .strip { gap: 12px; font-size: 10px; }
+    .sobre-stats { flex-wrap: wrap; gap: 20px; }
+    .rodape-top { flex-direction: column; align-items: flex-start; }
+}
